@@ -1,8 +1,87 @@
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--bg-color: #303030;
+	--border-color: #555555;
+	--text-color: #cccccc;
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+}
+
+.title {
+	text-align: center;
+	letter-spacing: 1px;
+	margin-top: 1rem;
+}
+
+.gameboard {
+	width: fit-content;
+	margin-inline: auto;
+	margin-top: 1rem;
+}
+
+.gameboard__row {
+	display: flex;
+	gap: 0.25rem;
+	margin-bottom: 0.25rem;
+}
+
+.gameboard__cell {
+	width: 3.5rem;
+	height: 3.5rem;
+	border: 2px solid var(--border-color);
+	border-radius: 2px;
+	user-select: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	font-size: 2rem;
+}
+
+.keyboard {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.25rem;
+	position: absolute;
+	width: 100%;
+	bottom: 25px;
+}
+
+.keyboard__first,
+.keyboard__second,
+.keyboard__third {
+	display: flex;
+	gap: 0.25rem;
+}
+
+.keyboard__key {
+	display: flex;
+	width: 2.5rem;
+	height: 3.25rem;
+	background-color: #5a5a5a;
+	color: white;
+	border-radius: 2px;
+	text-align: center;
+	font-weight: bold;
+	justify-content: center;
+	align-items: center;
+	user-select: none;
+	cursor: pointer;
+}
+
+.keyboard__action {
+	width: 4rem;
 }
