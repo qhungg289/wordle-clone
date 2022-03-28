@@ -1,27 +1,30 @@
 import "./style.css";
 import dictionary from "./dictionary.json";
+import { renderGameBoard, updateGameBoardContent } from "./gameBoard";
+import { getRandomWordFromDict } from "./utils";
 
-function getRandomWordFromDict(dict: string[]): string {
-	return dict[Math.floor(Math.random() * dict.length)].toUpperCase();
-}
-
-const selectedWord = getRandomWordFromDict(dictionary);
+// First, get a new random word from the dictionary
+let selectedWord = getRandomWordFromDict(dictionary);
 console.log(selectedWord);
 
+// Then, render the board
+renderGameBoard();
+
+// Get all the keyboard elements
 const keyboard = document.querySelectorAll<HTMLDivElement>(".keyboard__key");
 
+// Assign event listeners for all the on screen keyboard elements
 keyboard.forEach((key) => {
-	if (key.innerHTML.length == 1) {
-		key.onclick = () => {
-			console.log(key.innerHTML);
-		};
-	}
+	key.onclick = () => {
+		updateGameBoardContent(key.innerHTML);
+	};
 });
 
 document.onkeydown = (event: KeyboardEvent) => {
 	const keyName = event.key.toUpperCase();
+	const regex = /[a-zA-Z]/;
 
-	if (keyName.length === 1 && !parseInt(keyName)) {
+	if (regex.test(keyName) && keyName.length === 1) {
 		console.log(keyName);
 	}
 };
