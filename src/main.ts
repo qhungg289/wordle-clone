@@ -20,11 +20,16 @@ keyboard.forEach((key) => {
 	};
 });
 
+// Assign event listener for hardware keyboard
 document.onkeydown = (event: KeyboardEvent) => {
 	const keyName = event.key.toUpperCase();
 	const regex = /[a-zA-Z]/;
 
-	if (regex.test(keyName) && keyName.length === 1) {
-		console.log(keyName);
+	if ((regex.test(keyName) && keyName.length === 1) || keyName === "ENTER") {
+		updateGameBoardContent(keyName);
+	}
+
+	if (keyName === "BACKSPACE") {
+		updateGameBoardContent("DEL");
 	}
 };
