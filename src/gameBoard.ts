@@ -113,8 +113,22 @@ function updateGameBoardContent(content: string) {
 	}
 
 	if (content === "DEL" && inputIndex > -1) {
-		console.log("DEL");
-		console.log({ inputIndex, rowIndex });
+		if (!gameBoard[rowIndex][inputIndex].content && inputIndex !== 0) {
+			let tempIndex = inputIndex - 1;
+			gameBoard[rowIndex][tempIndex].content = "";
+		} else if (inputIndex == 4) {
+			gameBoard[rowIndex][inputIndex].content = "";
+			renderGameBoard();
+			return;
+		} else {
+			gameBoard[rowIndex][inputIndex].content = "";
+		}
+
+		if (inputIndex >= 1) {
+			inputIndex--;
+		}
+
+		renderGameBoard();
 	}
 }
 
