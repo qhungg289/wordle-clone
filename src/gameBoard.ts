@@ -72,15 +72,15 @@ function renderGameBoard() {
 			gameBoardHTML[i][j].innerHTML = cell.content;
 
 			if (cell.isExist) {
-				gameBoardHTML[i][j].classList.add("letter__exist");
+				gameBoardHTML[i][j].classList.add("exist");
 			}
 
 			if (cell.isCorrect) {
-				gameBoardHTML[i][j].classList.add("letter__correct");
+				gameBoardHTML[i][j].classList.add("correct");
 			}
 
 			if (!cell.isReady) {
-				gameBoardHTML[i][j].classList.add("cell__done");
+				gameBoardHTML[i][j].classList.add("done");
 			}
 		});
 	});
@@ -96,7 +96,7 @@ function updateGameBoardContent(content: string) {
 	if (content.length === 1 && inputIndex <= 4) {
 		if (isRowEmpty) {
 			gameBoard[rowIndex][inputIndex].content = content;
-			gameBoardHTML[rowIndex][inputIndex].classList.add("fadein");
+			gameBoardHTML[rowIndex][inputIndex].classList.add("zoom__in");
 		}
 
 		if (inputIndex < 4) {
@@ -109,6 +109,9 @@ function updateGameBoardContent(content: string) {
 	if (content === "ENTER" && !isRowEmpty && rowIndex <= 5) {
 		inputIndex = 0;
 
+		gameBoard[rowIndex].forEach((cell) => (cell.isReady = false));
+		renderGameBoard();
+
 		if (rowIndex < 5) {
 			rowIndex++;
 		}
@@ -119,17 +122,17 @@ function updateGameBoardContent(content: string) {
 			let tempIndex = inputIndex - 1;
 
 			gameBoard[rowIndex][tempIndex].content = "";
-			gameBoardHTML[rowIndex][tempIndex].classList.remove("fadein");
+			gameBoardHTML[rowIndex][tempIndex].classList.remove("zoom__in");
 		} else if (inputIndex == 4) {
 			gameBoard[rowIndex][inputIndex].content = "";
-			gameBoardHTML[rowIndex][inputIndex].classList.remove("fadein");
+			gameBoardHTML[rowIndex][inputIndex].classList.remove("zoom__in");
 
 			renderGameBoard();
 
 			return;
 		} else {
 			gameBoard[rowIndex][inputIndex].content = "";
-			gameBoardHTML[rowIndex][inputIndex].classList.remove("fadein");
+			gameBoardHTML[rowIndex][inputIndex].classList.remove("zoom__in");
 		}
 
 		if (inputIndex >= 1) {
