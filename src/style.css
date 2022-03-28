@@ -1,3 +1,9 @@
+/* ==================
+     Global styles 
+ ================== */
+@import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
 *,
 *::before,
 *::after {
@@ -13,22 +19,33 @@
 }
 
 body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	font-family: "Inter", sans-serif;
 	background-color: var(--bg-color);
 	color: var(--text-color);
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
 }
 
+/* ==================
+     Title styles 
+ ================== */
 .title {
 	text-align: center;
 	letter-spacing: 1px;
-	margin-top: 1rem;
+	font-size: 1.5rem;
+	font-family: "Arvo", serif;
+	padding: 0.5rem;
 }
 
+/* ==================
+  Game board styles 
+ ================== */
 .gameboard {
 	width: fit-content;
 	margin-inline: auto;
-	margin-top: 1rem;
+	/* margin-top: 1rem; */
 }
 
 .gameboard__row {
@@ -50,14 +67,28 @@ body {
 	font-size: 2rem;
 }
 
+.letter__exist {
+	background-color: #919110;
+}
+
+.letter__correct {
+	background-color: #238d23;
+}
+
+.cell__done {
+	background-color: #555555;
+}
+
+/* ==================
+   Keyboard styles 
+ ================== */
 .keyboard {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 0.25rem;
-	position: absolute;
 	width: 100%;
-	bottom: 25px;
+	bottom: 10px;
 }
 
 .keyboard__first,
@@ -84,4 +115,19 @@ body {
 
 .keyboard__action {
 	width: 4rem;
+}
+
+/* ==================
+     Media queries 
+ ================== */
+@media screen and (max-width: 460px) {
+	.keyboard__key {
+		width: 2rem;
+		height: 2.75rem;
+		font-size: 0.75rem;
+	}
+
+	.keyboard__action {
+		width: 3.25rem;
+	}
 }
