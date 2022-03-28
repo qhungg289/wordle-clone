@@ -45,7 +45,6 @@ body {
 .gameboard {
 	width: fit-content;
 	margin-inline: auto;
-	/* margin-top: 1rem; */
 }
 
 .gameboard__row {
@@ -76,7 +75,7 @@ body {
 }
 
 .cell__done {
-	background-color: #555555;
+	background-color: var(--border-color);
 }
 
 /* ==================
@@ -129,5 +128,24 @@ body {
 
 	.keyboard__action {
 		width: 3.25rem;
+	}
+}
+
+/* ==================
+      Animation 
+ ================== */
+.fadein {
+	animation: fadein 300ms;
+}
+
+@keyframes fadein {
+	from {
+		transform: scale(2);
+		opacity: 0;
+	}
+
+	to {
+		transform: scale(1);
+		opacity: 1;
 	}
 }

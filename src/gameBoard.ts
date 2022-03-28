@@ -89,12 +89,14 @@ function renderGameBoard() {
 let inputIndex = 0;
 let rowIndex = 0;
 
+// TODO: Refactor this
 function updateGameBoardContent(content: string) {
 	const isRowEmpty = !gameBoard[rowIndex].every((row) => row.content !== "");
 
 	if (content.length === 1 && inputIndex <= 4) {
 		if (isRowEmpty) {
 			gameBoard[rowIndex][inputIndex].content = content;
+			gameBoardHTML[rowIndex][inputIndex].classList.add("fadein");
 		}
 
 		if (inputIndex < 4) {
@@ -115,13 +117,19 @@ function updateGameBoardContent(content: string) {
 	if (content === "DEL" && inputIndex > -1) {
 		if (!gameBoard[rowIndex][inputIndex].content && inputIndex !== 0) {
 			let tempIndex = inputIndex - 1;
+
 			gameBoard[rowIndex][tempIndex].content = "";
+			gameBoardHTML[rowIndex][tempIndex].classList.remove("fadein");
 		} else if (inputIndex == 4) {
 			gameBoard[rowIndex][inputIndex].content = "";
+			gameBoardHTML[rowIndex][inputIndex].classList.remove("fadein");
+
 			renderGameBoard();
+
 			return;
 		} else {
 			gameBoard[rowIndex][inputIndex].content = "";
+			gameBoardHTML[rowIndex][inputIndex].classList.remove("fadein");
 		}
 
 		if (inputIndex >= 1) {
