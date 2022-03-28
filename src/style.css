@@ -64,17 +64,18 @@ body {
 	justify-content: center;
 	font-weight: bold;
 	font-size: 2rem;
+	transition: 300ms;
 }
 
-.letter__exist {
+.exist {
 	background-color: #919110;
 }
 
-.letter__correct {
+.correct {
 	background-color: #238d23;
 }
 
-.cell__done {
+.done {
 	background-color: var(--border-color);
 }
 
@@ -134,11 +135,11 @@ body {
 /* ==================
       Animation 
  ================== */
-.fadein {
-	animation: fadein 300ms;
+.zoom__in {
+	animation: zoom__in 300ms;
 }
 
-@keyframes fadein {
+@keyframes zoom__in {
 	from {
 		transform: scale(2);
 		opacity: 0;
