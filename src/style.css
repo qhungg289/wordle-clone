@@ -67,6 +67,9 @@ body {
 	transition: 300ms;
 }
 
+/* ==================
+  Game status styles 
+ ================== */
 .done {
 	background-color: var(--border-color);
 }
