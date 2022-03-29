@@ -117,7 +117,7 @@ function updateGameBoardContent(content: string) {
 		}
 	}
 
-	if (content === "DEL" && inputIndex > -1) {
+	if ((content === "DEL" || content === "BACKSPACE") && inputIndex > -1) {
 		if (!gameBoard[rowIndex][inputIndex].content && inputIndex !== 0) {
 			let tempIndex = inputIndex - 1;
 
@@ -142,5 +142,10 @@ function updateGameBoardContent(content: string) {
 		renderGameBoard();
 	}
 }
+
+function checkRowInputWithSelectedWord(
+	selectedWord: string[],
+	row: IGameCell[]
+) {}
 
 export { renderGameBoard, updateGameBoardContent, gameBoard };

@@ -25,11 +25,11 @@ document.onkeydown = (event: KeyboardEvent) => {
 	const keyName = event.key.toUpperCase();
 	const regex = /[a-zA-Z]/;
 
-	if ((regex.test(keyName) && keyName.length === 1) || keyName === "ENTER") {
+	if (
+		(regex.test(keyName) && keyName.length === 1) ||
+		keyName === "ENTER" ||
+		keyName === "BACKSPACE"
+	) {
 		updateGameBoardContent(keyName);
-	}
-
-	if (keyName === "BACKSPACE") {
-		updateGameBoardContent("DEL");
 	}
 };
