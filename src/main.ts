@@ -1,13 +1,7 @@
 import "./style.css";
-import dictionary from "./dictionary.json";
 import { renderGameBoard, updateGameBoardContent } from "./gameBoard";
-import { getRandomWordFromDict } from "./utils";
 
-// First, get a new random word from the dictionary
-let selectedWord = getRandomWordFromDict(dictionary);
-console.log(selectedWord);
-
-// Then, render the board
+// Render the board
 renderGameBoard();
 
 // Get all the keyboard elements
