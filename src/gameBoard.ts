@@ -91,7 +91,7 @@ let rowIndex = 0;
 
 // TODO: Refactor this
 function updateGameBoardContent(content: string) {
-	const isRowEmpty = !gameBoard[rowIndex].every((row) => row.content !== "");
+	const isRowEmpty = !gameBoard[rowIndex].every((cell) => cell.content !== "");
 
 	if (content.length === 1 && inputIndex <= 4) {
 		if (isRowEmpty) {
