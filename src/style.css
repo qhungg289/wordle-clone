@@ -67,16 +67,16 @@ body {
 	transition: 300ms;
 }
 
+.done {
+	background-color: var(--border-color);
+}
+
 .exist {
 	background-color: #919110;
 }
 
 .correct {
 	background-color: #238d23;
-}
-
-.done {
-	background-color: var(--border-color);
 }
 
 /* ==================
