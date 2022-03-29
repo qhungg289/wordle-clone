@@ -1,9 +1,9 @@
-interface IGameCell {
-	content: string;
-	isExist: boolean;
-	isCorrect: boolean;
-	isReady: boolean;
-}
+import dictionary from "./dictionary.json";
+import { getRandomWordFromDict } from "./utils";
+import { IGameCell } from "./types/types";
+
+let selectedWord = getRandomWordFromDict(dictionary);
+console.log(selectedWord);
 
 const gameBoard: IGameCell[][] = [
 	[
@@ -86,6 +86,27 @@ function renderGameBoard() {
 	});
 }
 
+function checkRowInputWithSelectedWord(
+	selectedWord: string[],
+	row: IGameCell[]
+) {
+	row.forEach((cell, i) => {
+		selectedWord.forEach((letter, j) => {
+			if (cell.content === letter && i === j) {
+				cell.isCorrect = true;
+				return;
+			}
+
+			if (cell.content === letter) {
+				cell.isExist = true;
+				return;
+			}
+
+			cell.isReady = false;
+		});
+	});
+}
+
 let inputIndex = 0;
 let rowIndex = 0;
 
@@ -109,7 +130,7 @@ function updateGameBoardContent(content: string) {
 	if (content === "ENTER" && !isRowEmpty && rowIndex <= 5) {
 		inputIndex = 0;
 
-		gameBoard[rowIndex].forEach((cell) => (cell.isReady = false));
+		checkRowInputWithSelectedWord(selectedWord, gameBoard[rowIndex]);
 		renderGameBoard();
 
 		if (rowIndex < 5) {
@@ -142,10 +163,5 @@ function updateGameBoardContent(content: string) {
 		renderGameBoard();
 	}
 }
-
-function checkRowInputWithSelectedWord(
-	selectedWord: string[],
-	row: IGameCell[]
-) {}
 
 export { renderGameBoard, updateGameBoardContent, gameBoard };
