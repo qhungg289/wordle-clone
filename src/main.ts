@@ -1,5 +1,5 @@
 import "./style.css";
-import { renderGameBoard, updateGameBoardContent } from "./gameBoard";
+import { renderGameBoard, updateGameBoardContent } from "./gameLoop";
 
 // Render the board
 renderGameBoard();

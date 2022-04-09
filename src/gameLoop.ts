@@ -95,14 +95,12 @@ function checkRowInputWithSelectedWord(
 			if (cell.content === letter && i === j) {
 				cell.isCorrect = true;
 				return;
-			}
-
-			if (cell.content === letter) {
+			} else if (cell.content === letter) {
 				cell.isExist = true;
 				return;
+			} else {
+				cell.isReady = false;
 			}
-
-			cell.isReady = false;
 		});
 	});
 }
