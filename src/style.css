@@ -13,9 +13,9 @@
 }
 
 :root {
-	--bg-color: #303030;
-	--border-color: #555555;
-	--text-color: #cccccc;
+	--bg-color: #1a1a1a;
+	--border-color: #3b3b3b;
+	--text-color: #ffffff;
 }
 
 body {
@@ -75,11 +75,13 @@ body {
 }
 
 .exist {
-	background-color: #919110;
+	background-color: #adad24;
+	border-color: #adad24;
 }
 
 .correct {
-	background-color: #238d23;
+	background-color: #49b349;
+	border-color: #49b349;
 }
 
 /* ==================
