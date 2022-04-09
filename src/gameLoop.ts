@@ -95,12 +95,14 @@ function checkRowInputWithSelectedWord(
 			if (cell.content === letter && i === j) {
 				cell.isCorrect = true;
 				return;
-			} else if (cell.content === letter) {
+			}
+
+			if (cell.content === letter) {
 				cell.isExist = true;
 				return;
-			} else {
-				cell.isReady = false;
 			}
+
+			cell.isReady = false;
 		});
 	});
 }
@@ -129,6 +131,7 @@ function updateGameBoardContent(content: string) {
 		inputIndex = 0;
 
 		checkRowInputWithSelectedWord(selectedWord, gameBoard[rowIndex]);
+		updateKeyboardElements();
 		renderGameBoard();
 
 		if (rowIndex < 5) {
@@ -160,6 +163,28 @@ function updateGameBoardContent(content: string) {
 
 		renderGameBoard();
 	}
+}
+
+function updateKeyboardElements() {
+	const keyboard = document.querySelectorAll<HTMLDivElement>(".keyboard__key");
+
+	gameBoard.forEach((row) => {
+		row.forEach((cell) => {
+			keyboard.forEach((key) => {
+				if (cell.isCorrect && cell.content === key.innerHTML) {
+					key.classList.add("correct");
+				}
+
+				if (cell.isExist && cell.content === key.innerHTML) {
+					key.classList.add("exist");
+				}
+
+				if (!cell.isReady && cell.content === key.innerHTML) {
+					key.classList.add("done");
+				}
+			});
+		});
+	});
 }
 
 export { renderGameBoard, updateGameBoardContent, gameBoard };
