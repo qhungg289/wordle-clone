@@ -68,23 +68,6 @@ body {
 }
 
 /* ==================
-  Game status styles 
- ================== */
-.done {
-	background-color: var(--border-color);
-}
-
-.exist {
-	background-color: #adad24;
-	border-color: #adad24;
-}
-
-.correct {
-	background-color: #49b349;
-	border-color: #49b349;
-}
-
-/* ==================
    Keyboard styles 
  ================== */
 .keyboard {
@@ -107,7 +90,7 @@ body {
 	display: flex;
 	width: 2.5rem;
 	height: 3.25rem;
-	background-color: #5a5a5a;
+	background-color: #797979;
 	color: white;
 	border-radius: 2px;
 	text-align: center;
@@ -120,6 +103,23 @@ body {
 
 .keyboard__action {
 	width: 4rem;
+}
+
+/* ==================
+  Game status styles 
+ ================== */
+.done {
+	background-color: var(--border-color);
+}
+
+.exist {
+	background-color: #adad24;
+	border-color: #adad24;
+}
+
+.correct {
+	background-color: #49b349;
+	border-color: #49b349;
 }
 
 /* ==================
