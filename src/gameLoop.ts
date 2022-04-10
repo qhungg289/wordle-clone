@@ -2,8 +2,11 @@ import dictionary from "./dictionary.json";
 import { getRandomWordFromDict } from "./utils";
 import { IGameCell } from "./types/types";
 
+// Get a random word from dictionary, saved as a string array
 let selectedWord = getRandomWordFromDict(dictionary);
 console.log(selectedWord);
+
+const keyboard = document.querySelectorAll<HTMLDivElement>(".keyboard__key");
 
 const gameBoard: IGameCell[][] = [
 	[
@@ -50,6 +53,7 @@ const gameBoard: IGameCell[][] = [
 	],
 ];
 
+// Get each row in the HTML and store all of it in a 2D array
 const firstGameBoardRow = document.querySelectorAll(".first__row");
 const secondGameBoardRow = document.querySelectorAll(".second__row");
 const thirdGameBoardRow = document.querySelectorAll(".third__row");
@@ -69,6 +73,7 @@ const gameBoardHTML = [
 function renderGameBoard() {
 	gameBoard.forEach((row, i) => {
 		row.forEach((cell, j) => {
+			// Set content for each HTML element
 			gameBoardHTML[i][j].innerHTML = cell.content;
 
 			if (cell.isExist) {
@@ -86,12 +91,46 @@ function renderGameBoard() {
 	});
 }
 
+function newGame() {
+	selectedWord = getRandomWordFromDict(dictionary);
+	console.log(selectedWord);
+
+	gameBoard.forEach((row) => {
+		row.forEach((cell) => {
+			cell.content = "";
+			cell.isCorrect = false;
+			cell.isExist = false;
+			cell.isReady = true;
+		});
+	});
+
+	gameBoardHTML.forEach((row) => {
+		row.forEach((cell) => {
+			cell.classList.remove("done");
+			cell.classList.remove("exist");
+			cell.classList.remove("correct");
+		});
+	});
+
+	keyboard.forEach((key) => {
+		key.classList.remove("done");
+		key.classList.remove("exist");
+		key.classList.remove("correct");
+	});
+
+	inputIndex = rowIndex = 0;
+
+	renderGameBoard();
+	updateKeyboardHTMLElements();
+}
+
 function checkRowInputWithSelectedWord(
 	selectedWord: string[],
 	row: IGameCell[]
 ) {
 	row.forEach((cell, i) => {
 		selectedWord.forEach((letter, j) => {
+			// If cell's content match with the letter and the index is the same
 			if (cell.content === letter && i === j) {
 				cell.isCorrect = true;
 				return;
@@ -108,8 +147,6 @@ function checkRowInputWithSelectedWord(
 }
 
 function updateKeyboardHTMLElements() {
-	const keyboard = document.querySelectorAll<HTMLDivElement>(".keyboard__key");
-
 	gameBoard.forEach((row) => {
 		row.forEach((cell) => {
 			keyboard.forEach((key) => {
@@ -203,4 +240,4 @@ function updateGameBoardContent(content: string) {
 	}
 }
 
-export { renderGameBoard, updateGameBoardContent, gameBoard };
+export { renderGameBoard, updateGameBoardContent, newGame, gameBoard };
