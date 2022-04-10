@@ -49,6 +49,29 @@ body {
 	width: 2rem;
 }
 
+#refresh {
+	position: relative;
+}
+
+#refresh::after {
+	content: "New word";
+	position: absolute;
+	top: 36px;
+	right: 0;
+	padding: 1em;
+	width: 8em;
+	border-radius: 4px;
+	background-color: black;
+	color: var(--text-color);
+	opacity: 0;
+	transition: opacity 300ms;
+	pointer-events: none;
+}
+
+#refresh:hover::after {
+	opacity: 1;
+}
+
 /* ==================
      Title styles 
  ================== */
