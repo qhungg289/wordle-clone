@@ -29,6 +29,27 @@ body {
 }
 
 /* ==================
+     			Nav 
+ ================== */
+.nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 1rem;
+}
+
+.nav button {
+	background-color: transparent;
+	border: none;
+	color: var(--text-color);
+	cursor: pointer;
+}
+
+.nav button svg {
+	width: 2rem;
+}
+
+/* ==================
      Title styles 
  ================== */
 .title {
