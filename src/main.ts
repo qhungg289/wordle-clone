@@ -1,5 +1,5 @@
 import "./style.css";
-import { renderGameBoard, updateGameBoardContent } from "./gameLoop";
+import { newGame, renderGameBoard, updateGameBoardContent } from "./gameLoop";
 
 // Render the board
 renderGameBoard();
@@ -27,3 +27,9 @@ document.onkeydown = (event: KeyboardEvent) => {
 		updateGameBoardContent(keyName);
 	}
 };
+
+const refreshBtn = document.querySelector<HTMLButtonElement>("#refresh");
+
+if (refreshBtn !== null) {
+	refreshBtn.onclick = newGame;
+}
