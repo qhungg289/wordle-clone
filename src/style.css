@@ -73,6 +73,22 @@ body {
 }
 
 /* ==================
+		Alert box
+ ================== */
+.alert {
+	background-color: var(--border-color);
+	position: absolute;
+	top: -10rem;
+	left: calc(50vw - 7rem);
+	padding: 1em;
+	width: 14rem;
+	border-radius: 4px;
+	font-weight: bold;
+	text-align: center;
+	transition: top 200ms;
+}
+
+/* ==================
      Title styles 
  ================== */
 .title {
